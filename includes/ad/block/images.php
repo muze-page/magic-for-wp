@@ -13,7 +13,8 @@ function magick_ad_img_content( $content, $v, $arr, $i ) {
                 extract( $arr_content );
                 
                 //判断 - 是否展示广告
-                
+                //拿到判断的值option_watermark
+
                 //输出
                 $arr[ $i ][ 'output_content' ] .= "
                 <div class='magick_img'><div class='magick_adTag'>广告</div>
