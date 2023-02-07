@@ -12,6 +12,7 @@ function magick_ad_img_content( $content, $v, $arr, $i ) {
                 //将数组转为标量变量
                 extract( $arr_content );
                 
+                //判断 - 是否展示广告
                 
                 //输出
                 $arr[ $i ][ 'output_content' ] .= "
