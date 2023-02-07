@@ -1,5 +1,21 @@
 <?php
 //发文统计模块
+
+
+//统计文章后台添加echarts.js文件
+
+function magick_load_echarts( $hook ) {
+    if ( 'toplevel_page_wporg' != $hook ) {
+        return;
+    }
+
+    //wp_enqueue_script( 'echarts', dirname( __FILE__ )  . 'assets/js/echarts_v5.4.0.js', array(), '1.0' );
+    wp_enqueue_script( 'echarts', plugin_dir_url(\dirname(__DIR__)).'assets/js/echarts_v5.4.0.js', array(), '1.0' );
+}
+add_action( 'admin_enqueue_scripts', 'magick_load_echarts' );
+
+
+//菜单
 add_action( 'admin_menu', 'wporg_options_page' );
 function wporg_options_page() {
 	add_menu_page(

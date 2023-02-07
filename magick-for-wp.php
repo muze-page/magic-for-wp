@@ -16,7 +16,7 @@ Author URI: https://www.npc.ink/276641.html
 require_once dirname( __FILE__ ) . '/includes/plugins/plugins.php';
 
 //载入后台相关设置选项
-require_once dirname( __FILE__ ) . '/admin/magick_ad_admin.php';
+require_once dirname( __FILE__ ) . '/includes/magick_ad_admin.php';
 
 
 //载入测试类
@@ -127,22 +127,7 @@ wp_enqueue_style( 'dashicons' );
 
 });
 
-//插件管理
- //设置按钮
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), function($links){
-    $links[] = '<a href="'.get_admin_url(null, 'admin.php?page=theme-general-settings') . '">' . __('设置','n') . '</a>';
-    return $links;
-});
 
-
- //增加插件信息
-add_filter('plugin_row_meta',function($links, $file) {
-    if ($file == plugin_basename(__FILE__)) {
-        $links[] = '<a target="_blank" href="https://www.npc.ink/276641.html">使用帮助</a>';
-        $links[] = '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1355471563">联系QQ</a>';
-    }
-    return $links;
-}, 10, 2);
 
 
 
