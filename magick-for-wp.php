@@ -15,18 +15,13 @@ Author URI: https://www.npc.ink/276641.html
 
 
 //载入后台相关设置选项
-require_once dirname( __FILE__ ) . '/includes/magick_ad_admin.php';
+require_once dirname( __FILE__ ) . '/includes/ad_admin.php';
 
 
-//载入测试类
-//核心类
-require_once dirname( __FILE__ ) . '/includes/class_magick_ad.php';
 
-//全局广告类
-require_once dirname( __FILE__ ) . '/includes/class_magick_ad_all.php';
 
-//指定广告类
-require_once dirname( __FILE__ ) . '/includes/class_magick_ad_appoint.php';
+
+
 
 
 
