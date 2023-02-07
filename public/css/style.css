@@ -1,0 +1,20 @@
+    /*广告图标用CSS*/
+    .magick_img {
+        position: relative;
+    }
+    .magick_img .magick_adTag {
+        background-color: #000;
+        border: 1px solid #ebebeb;
+        border-radius: 5px;
+        bottom: 10px;
+        right: 10px;
+        color: #ebebeb;
+        font-size: 12px;
+        line-height: 27px;
+        opacity: .5;
+        position: absolute;
+        
+        text-align: center;
+        width: 45px;
+        z-index: 1;
+    }
