@@ -1,11 +1,6 @@
 <?php
 
-//打印变量用
-function p($data) {
-	echo "<pre>";
-	print_r($data);
-	echo "</pre>";
-}
+
 
 
 

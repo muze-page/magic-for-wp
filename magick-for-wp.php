@@ -11,9 +11,8 @@ Author URI: https://www.npc.ink/276641.html
 //载入ACF用的设置文件
 //require_once dirname( __FILE__ ) . '/admin/partials/magick_ad_seting.php';
 
-//准备工作
-//载入推荐安装插件
-require_once dirname( __FILE__ ) . '/includes/plugins/plugins.php';
+
+
 
 //载入后台相关设置选项
 require_once dirname( __FILE__ ) . '/includes/magick_ad_admin.php';
@@ -32,63 +31,10 @@ require_once dirname( __FILE__ ) . '/includes/class_magick_ad_appoint.php';
 
 
 
-
-
-
-//add_action( 'all', 'test_top' );
-function test_top() {
-	//$add_content = "<h1>".p( test )."</h1>";
-	$add_content = "1";
-	echo $add_content;
-}
-;
-
-
-//插件
-//define() 函数定义一个常量。
-$a = get_stylesheet_uri();
-define( 'test', $a );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //载入功能模块
 require_once dirname( __FILE__ ) . '/block/acf_block.php';
 
-//载入样式
-//载入所需VUE框架 - 顶部
-function magick_load_vue() {
-    wp_enqueue_script( 'vue', plugin_dir_url( __FILE__ )  . 'assets/js/vue.global_v3.2.45.js', array(), '1.0.0', false );
-}
-add_action( 'wp_enqueue_scripts', 'magick_load_vue' );
 
-
-//载入所需Elements Pro框架 - 顶部
-function magick_load_elementsPro() {
-    wp_enqueue_style( 'elementsPro_style', plugin_dir_url( __FILE__ )  . 'assets/css/element-plus-v2.2.25.css', array(), '1.0.0', false );
-    wp_enqueue_script( 'elementsPro_javascript', plugin_dir_url( __FILE__ )  . 'assets/js/element-plus_v2.2.25.js', array(), '1.0.0', false );
-}
-add_action( 'wp_enqueue_scripts', 'magick_load_elementsPro' );
-
-//载入插件所需用的样式
-
-function magick_load_style() {
-    wp_enqueue_style( 'style', plugin_dir_url( __FILE__ )  . 'assets/css/style.css', array(), '1.0.0', false );
-}
-add_action( 'wp_enqueue_scripts', 'magick_load_style' );
 
 ////（可选）隐藏ACF管理菜单项。
 //add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
@@ -132,7 +78,27 @@ wp_enqueue_style( 'dashicons' );
 
 
 
+//打印变量用
+function p($data) {
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+}
 
+
+//add_action( 'all', 'test_top' );
+function test_top() {
+	//$add_content = "<h1>".p( test )."</h1>";
+	$add_content = "1";
+	echo $add_content;
+}
+;
+
+
+//插件
+//define() 函数定义一个常量。
+$a = get_stylesheet_uri();
+define( 'test', $a );
 
 
 //载入广告功能函数
