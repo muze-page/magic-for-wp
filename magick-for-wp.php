@@ -69,7 +69,26 @@ define( 'test', $a );
 require_once dirname( __FILE__ ) . '/block/acf_block.php';
 
 //载入样式
-require_once dirname( __FILE__ ) . '/public/magick_ad_public.php';
+//载入所需VUE框架 - 顶部
+function magick_load_vue() {
+    wp_enqueue_script( 'vue', plugin_dir_url( __FILE__ )  . 'assets/js/vue.global_v3.2.45.js', array(), '1.0.0', false );
+}
+add_action( 'wp_enqueue_scripts', 'magick_load_vue' );
+
+
+//载入所需Elements Pro框架 - 顶部
+function magick_load_elementsPro() {
+    wp_enqueue_style( 'elementsPro_style', plugin_dir_url( __FILE__ )  . 'assets/css/element-plus-v2.2.25.css', array(), '1.0.0', false );
+    wp_enqueue_script( 'elementsPro_javascript', plugin_dir_url( __FILE__ )  . 'assets/js/element-plus_v2.2.25.js', array(), '1.0.0', false );
+}
+add_action( 'wp_enqueue_scripts', 'magick_load_elementsPro' );
+
+//载入插件所需用的样式
+
+function magick_load_style() {
+    wp_enqueue_style( 'style', plugin_dir_url( __FILE__ )  . 'assets/css/style.css', array(), '1.0.0', false );
+}
+add_action( 'wp_enqueue_scripts', 'magick_load_style' );
 
 ////（可选）隐藏ACF管理菜单项。
 //add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
