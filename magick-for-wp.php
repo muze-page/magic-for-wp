@@ -8,27 +8,15 @@ Author: Muze
 Author URI: https://www.npc.ink/276641.html
 */
 
+//载入ACF用的设置文件
+//require_once dirname( __FILE__ ) . '/admin/partials/magick_ad_seting.php';
+
 //准备工作
 //载入推荐安装插件
 require_once dirname( __FILE__ ) . '/includes/plugins/plugins.php';
-//屏蔽指定插件更新提示
-//屏蔽插件更新通知
-//屏蔽ACF Pro 插件更新提示
-function wcr_remove_update_notifications($value) {
-    // 要屏蔽的插件位置 (在wp-content/plugins文件夹下)
-    $plugins = array(
-    'advanced-custom-fields-pro/acf.php'
-    );
-    foreach ($plugins as $key => $plugin) {
-    if (empty($value->response[$plugin])) {
-    continue;
-    }
-    unset($value->response[$plugin]);
-    }
-    return $value;
-    }
-    add_filter('site_transient_update_plugins', 'wcr_remove_update_notifications');
 
+//载入后台相关设置选项
+require_once dirname( __FILE__ ) . '/admin/magick_ad_admin.php';
 
 
 //载入测试类
@@ -43,7 +31,7 @@ require_once dirname( __FILE__ ) . '/includes/class_magick_ad_appoint.php';
 
 
 
-//全站顶部添加内容
+
 
 
 
@@ -69,16 +57,11 @@ define( 'test', $a );
 
 
 
-//载入广告功能函数
-//require_once dirname( __FILE__ ) . '/acf-ad.php';
-
-//载入公共函数
-//require_once dirname( __FILE__ ) . '/acf-public.php';
 
 
 
-//载入设置选项
-//require_once dirname( __FILE__ ) . '/admin/magick_ad_admin.php';
+
+
 
 
 
@@ -148,5 +131,9 @@ add_filter('plugin_row_meta',function($links, $file) {
 
 
 
+//载入广告功能函数
+//require_once dirname( __FILE__ ) . '/acf-ad.php';
 
+//载入公共函数
+//require_once dirname( __FILE__ ) . '/acf-public.php';
 
