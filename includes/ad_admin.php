@@ -21,3 +21,18 @@ require_once dirname( __FILE__ ) . '/ad/class_magick_ad_all.php';
 //指定广告类
 require_once dirname( __FILE__ ) . '/ad/class_magick_ad_appoint.php';
 
+/*
+*功能模块 - 弹窗
+*/
+require_once dirname( __FILE__ ) . '/ad/pop-up.php';
+
+/*
+*广告模块 - 图片
+*/
+require_once dirname( __FILE__ ) . '/ad/block/images.php';
+
+/*
+*广告模块 - 轮播图
+*/
+require_once dirname( __FILE__ ) . '/ad/block/carousel.php';
+

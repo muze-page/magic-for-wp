@@ -22,15 +22,6 @@ require_once dirname( __FILE__ ) . '/includes/ad_admin.php';
 
 
 
-
-
-
-
-//载入功能模块
-require_once dirname( __FILE__ ) . '/block/acf_block.php';
-
-
-
 ////（可选）隐藏ACF管理菜单项。
 //add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
 function my_acf_settings_show_admin( $show_admin ) {
