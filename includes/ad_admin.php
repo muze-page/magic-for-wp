@@ -34,6 +34,11 @@ require_once dirname( __FILE__ ) . '/ad/class_magick_ad_appoint.php';
 require_once dirname( __FILE__ ) . '/ad/pop-up.php';
 
 /*
+*功能模块 - 全局两侧广告
+*/
+require_once dirname( __FILE__ ) . '/ad/both-sides.php';
+
+/*
 *广告模块 - 图片
 */
 require_once dirname( __FILE__ ) . '/ad/block/images.php';

@@ -8,7 +8,6 @@ function magick_option_acf() {
     $a = get_field( 'acf_hide', 'options' );
     if ( $a == '1' ) {
         //显示字段
-        echo '成功啦';
 
     } else {
         //隐藏字段
