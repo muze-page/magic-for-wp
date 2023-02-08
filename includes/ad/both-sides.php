@@ -9,14 +9,23 @@ function magic_get_ad_jwai( $str ) {
     return $arr;
 }
 
-add_action( 'wp_footer', 'magick_ad_both_sides' );
+//移动端关闭广告
+if ( wp_is_mobile() ) {
+    //移动设备
+
+} else {
+    //PC 端展示
+    add_action( 'wp_footer', 'magick_ad_both_sides' );
+}
 
 function magick_ad_both_sides( $content ) {
+    //开启广告
     if ( magic_get_ad_jwai( 'both_sides_hide' ) == '1' ) {
-        //关闭弹窗
+
         echo magick_both_sides_content();
 
     } else {
+        //关闭广告
         return;
     }
     ;
