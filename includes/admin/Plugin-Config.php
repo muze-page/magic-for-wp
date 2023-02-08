@@ -25,6 +25,27 @@ add_filter('plugin_row_meta',function($links, $file) {
 }, 10, 2);
 
 
+//显示菜单
+//显示菜单选项
+//https://www.advancedcustomfields.com/resources/options-page/
+if( function_exists('acf_add_options_page') ) {
+    
+    //acf_add_options_page();
+acf_add_options_page(array(
+        'page_title'    => '自定义添加各种内容',
+        'menu_title'    => '广告',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false,
+        'post_id' => 'options',
+        'icon_url' => 'dashicons-filter',
+        'update_button' => __('保存'),
+        'updated_message' => __("保存成功"),
+    ));
+    
+
+    
+}
 
 //屏蔽ACF Pro 插件更新提示
 function wcr_remove_update_notifications($value) {
