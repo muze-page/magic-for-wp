@@ -1,4 +1,11 @@
 <?php
+
+//载入广设置关
+/*
+*插件设置
+*/
+require_once dirname( __FILE__ ) . '/admin/Plugin_Seting.php';
+
 //载入后台用文件
 
 //载入推荐安装插件

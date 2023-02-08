@@ -244,12 +244,15 @@ class Magick_Ad_Content {
         }
         ;
         $arr[ 'img_url' ] = $img_url;
+		
         $img_alt   = $content[ $v ][ 'img' ][ 'alt' ];
         if ( $img_alt ) {
             $img_alt =  'alt='.$img_alt;
         }
         ;
         $arr[ 'img_alt' ] = $img_alt;
+
+		//拿到配置选项
         return $arr;
     }
 }
