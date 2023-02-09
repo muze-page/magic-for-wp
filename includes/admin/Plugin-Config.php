@@ -32,7 +32,7 @@ if( function_exists('acf_add_options_page') ) {
     
     //acf_add_options_page();
 acf_add_options_page(array(
-        'page_title'    => '自定义添加各种内容',
+        'page_title'    => '魔法广告插件',
         'menu_title'    => '广告',
         'menu_slug'     => 'theme-general-settings',
         'capability'    => 'edit_posts',

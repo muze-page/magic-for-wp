@@ -32,8 +32,7 @@ if ( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
     //载入后台用文件
 
-    //发文统计
-    require_once dirname( __FILE__ ) . '/admin/Census.php';
+
 
     //载入广告相关
 
@@ -71,5 +70,8 @@ if ( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
     *广告模块 - 轮播图
     */
     require_once dirname( __FILE__ ) . '/ad/block/carousel.php';
+
+    //插件模块
+    require_once dirname( __FILE__ ) . '/plugin/index.php';
 
 }
