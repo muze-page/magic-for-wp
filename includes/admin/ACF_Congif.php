@@ -1,4 +1,5 @@
 <?php
+
 if ( function_exists( 'acf_add_local_field_group' ) ):
 
 acf_add_local_field_group( array(
@@ -66,7 +67,7 @@ acf_add_local_field_group( array(
                             'sub_fields' => array(
                                 array(
                                     'key' => 'field_63e2178e29143',
-                                    'label' => '广告内容',
+                                    'label' => '内容',
                                     'name' => '',
                                     'aria-label' => '',
                                     'type' => 'tab',
@@ -171,8 +172,8 @@ acf_add_local_field_group( array(
                                             ),
                                             'message' => '',
                                             'default_value' => 0,
-                                            'ui_on_text' => '显示水印',
-                                            'ui_off_text' => '隐藏水印',
+                                            'ui_on_text' => '显示',
+                                            'ui_off_text' => '隐藏',
                                             'ui' => 1,
                                         ),
                                     ),
@@ -282,240 +283,6 @@ acf_add_local_field_group( array(
                                             'parent_repeater' => 'field_639c19d6607bd',
                                         ),
                                     ),
-                                ),
-                            ),
-                            'min' => '',
-                            'max' => '',
-                        ),
-                        'layout_63d644594ba6c' => array(
-                            'key' => 'layout_63d644594ba6c',
-                            'name' => 'ad_test',
-                            'label' => '测试内容',
-                            'display' => 'block',
-                            'sub_fields' => array(
-                                array(
-                                    'key' => 'field_63d6469cc239a',
-                                    'label' => '内容',
-                                    'name' => '',
-                                    'aria-label' => '',
-                                    'type' => 'tab',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'placement' => 'top',
-                                    'endpoint' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63d6446c4ba6d',
-                                    'label' => '详细选项',
-                                    'name' => '详细选项',
-                                    'aria-label' => '',
-                                    'type' => 'wysiwyg',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'default_value' => '',
-                                    'tabs' => 'all',
-                                    'toolbar' => 'basic',
-                                    'media_upload' => 1,
-                                    'delay' => 1,
-                                ),
-                                array(
-                                    'key' => 'field_63d6477f8ffc2',
-                                    'label' => '配置',
-                                    'name' => '',
-                                    'aria-label' => '',
-                                    'type' => 'tab',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'placement' => 'top',
-                                    'endpoint' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63d647918ffc3',
-                                    'label' => '是否悬浮',
-                                    'name' => '是否悬浮',
-                                    'aria-label' => '',
-                                    'type' => 'true_false',
-                                    'instructions' => '在有些位置可能不起作用',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'message' => '悬浮显示广告',
-                                    'default_value' => 0,
-                                    'ui' => 0,
-                                    'ui_on_text' => '',
-                                    'ui_off_text' => '',
-                                ),
-                                array(
-                                    'key' => 'field_63d647d18ffc4',
-                                    'label' => '位置',
-                                    'name' => '位置',
-                                    'aria-label' => '',
-                                    'type' => 'button_group',
-                                    'instructions' => '默认为顶部',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'choices' => array(
-                                        '0:默认' => '0:默认',
-                                        '1:顶部' => '1:顶部',
-                                        '2:底部' => '2:底部',
-                                    ),
-                                    'allow_null' => 0,
-                                    'default_value' => '',
-                                    'layout' => 'horizontal',
-                                    'return_format' => 'value',
-                                ),
-                                array(
-                                    'key' => 'field_63d648178ffc5',
-                                    'label' => '距离',
-                                    'name' => '距离',
-                                    'aria-label' => '',
-                                    'type' => 'range',
-                                    'instructions' => '距离顶部或底部的距离，单位为px',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'default_value' => '',
-                                    'min' => '',
-                                    'max' => '',
-                                    'step' => '',
-                                    'prepend' => '',
-                                    'append' => '',
-                                ),
-                            ),
-                            'min' => '',
-                            'max' => '',
-                        ),
-                        'layout_63e34f77e4485' => array(
-                            'key' => 'layout_63e34f77e4485',
-                            'name' => 'ad_out_bounds',
-                            'label' => '界外广告',
-                            'display' => 'block',
-                            'sub_fields' => array(
-                                array(
-                                    'key' => 'field_63e35027e4489',
-                                    'label' => '内容',
-                                    'name' => '',
-                                    'aria-label' => '',
-                                    'type' => 'tab',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'placement' => 'top',
-                                    'endpoint' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63e34fd2e4487',
-                                    'label' => '左边',
-                                    'name' => 'lift_editor',
-                                    'aria-label' => '',
-                                    'type' => 'wysiwyg',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'tabs' => 'all',
-                                    'toolbar' => 'full',
-                                    'media_upload' => 1,
-                                    'default_value' => '',
-                                    'delay' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63e34ff8e4488',
-                                    'label' => '右边',
-                                    'name' => 'right_editor',
-                                    'aria-label' => '',
-                                    'type' => 'wysiwyg',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'tabs' => 'all',
-                                    'toolbar' => 'full',
-                                    'media_upload' => 1,
-                                    'default_value' => '',
-                                    'delay' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63e3503be448a',
-                                    'label' => '配置',
-                                    'name' => '',
-                                    'aria-label' => '',
-                                    'type' => 'tab',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'placement' => 'top',
-                                    'endpoint' => 0,
-                                ),
-                                array(
-                                    'key' => 'field_63e35046e448b',
-                                    'label' => '距离',
-                                    'name' => 'distance',
-                                    'aria-label' => '',
-                                    'type' => 'range',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'default_value' => '',
-                                    'min' => '',
-                                    'max' => '',
-                                    'step' => '',
-                                    'prepend' => '',
-                                    'append' => '',
                                 ),
                             ),
                             'min' => '',
@@ -726,6 +493,23 @@ acf_add_local_field_group( array(
                             'display' => 'block',
                             'sub_fields' => array(
                                 array(
+                                    'key' => 'field_63e44f39b5925',
+                                    'label' => '内容',
+                                    'name' => '',
+                                    'aria-label' => '',
+                                    'type' => 'tab',
+                                    'instructions' => '',
+                                    'required' => 0,
+                                    'conditional_logic' => 0,
+                                    'wrapper' => array(
+                                        'width' => '',
+                                        'class' => '',
+                                        'id' => '',
+                                    ),
+                                    'placement' => 'top',
+                                    'endpoint' => 0,
+                                ),
+                                array(
                                     'key' => 'field_6392f441d86e5',
                                     'label' => '图片',
                                     'name' => 'img',
@@ -765,6 +549,61 @@ acf_add_local_field_group( array(
                                         'id' => '',
                                     ),
                                     'return_format' => '',
+                                ),
+                                array(
+                                    'key' => 'field_63e44f45b5926',
+                                    'label' => '配置',
+                                    'name' => '',
+                                    'aria-label' => '',
+                                    'type' => 'tab',
+                                    'instructions' => '',
+                                    'required' => 0,
+                                    'conditional_logic' => 0,
+                                    'wrapper' => array(
+                                        'width' => '',
+                                        'class' => '',
+                                        'id' => '',
+                                    ),
+                                    'placement' => 'top',
+                                    'endpoint' => 0,
+                                ),
+                                array(
+                                    'key' => 'field_63e44f5ab5927',
+                                    'label' => '选项',
+                                    'name' => 'option',
+                                    'aria-label' => '',
+                                    'type' => 'group',
+                                    'instructions' => '',
+                                    'required' => 0,
+                                    'conditional_logic' => 0,
+                                    'wrapper' => array(
+                                        'width' => '',
+                                        'class' => '',
+                                        'id' => '',
+                                    ),
+                                    'layout' => 'block',
+                                    'sub_fields' => array(
+                                        array(
+                                            'key' => 'field_63e44f97b5928',
+                                            'label' => '隐藏水印',
+                                            'name' => 'watermark',
+                                            'aria-label' => '',
+                                            'type' => 'true_false',
+                                            'instructions' => '默认隐藏水印，水印将显示在图片中的右下角',
+                                            'required' => 0,
+                                            'conditional_logic' => 0,
+                                            'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => '',
+                                            ),
+                                            'message' => '',
+                                            'default_value' => 0,
+                                            'ui_on_text' => '显示',
+                                            'ui_off_text' => '隐藏',
+                                            'ui' => 1,
+                                        ),
+                                    ),
                                 ),
                             ),
                             'min' => '',
@@ -878,85 +717,29 @@ acf_add_local_field_group( array(
                             'ui' => 1,
                         ),
                         array(
-                            'key' => 'field_6392f441d86f4',
-                            'label' => '是否显示',
-                            'name' => 'judge',
+                            'key' => 'field_63e45112a43f0',
+                            'label' => '克隆一下',
+                            'name' => '11_',
                             'aria-label' => '',
-                            'type' => 'button_group',
+                            'type' => 'clone',
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
-                                'width' => '30',
+                                'width' => '',
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'choices' => array(
-                                0 => '隐藏',
-                                1 => '展示',
-                                2 => '随机',
+                            'clone' => array(
+                                0 => 'field_6385de2151212',
+                                1 => 'field_63e2fc02593a7',
+                                2 => 'field_6385de5551213',
+                                3 => 'field_6385de6d51214',
                             ),
-                            'allow_null' => 0,
-                            'default_value' => 1,
-                            'layout' => 'horizontal',
-                            'return_format' => 'value',
-                        ),
-                        array(
-                            'key' => 'field_6392f441d86f5',
-                            'label' => '显示平台',
-                            'name' => 'platform',
-                            'aria-label' => '',
-                            'type' => 'select',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '33',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'choices' => array(
-                                0 => '全平台',
-                                1 => '仅电脑端',
-                                2 => '仅手机端',
-                            ),
-                            'default_value' => false,
-                            'allow_null' => 0,
-                            'multiple' => 0,
-                            'ui' => 0,
-                            'return_format' => 'value',
-                            'ajax' => 0,
-                            'placeholder' => '',
-                        ),
-                        array(
-                            'key' => 'field_6392f441d86f6',
-                            'label' => '显示位置',
-                            'name' => 'position',
-                            'aria-label' => '',
-                            'type' => 'select',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '33',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'choices' => array(
-                                0 => '默认',
-                                1 => '文章内容顶部',
-                                2 => '文章内容底部',
-                                3 => '文章内容第三段',
-                                4 => '仅文章顶部',
-                                5 => '仅文章底部',
-                            ),
-                            'default_value' => false,
-                            'allow_null' => 0,
-                            'multiple' => 0,
-                            'ui' => 0,
-                            'return_format' => 'value',
-                            'ajax' => 0,
-                            'placeholder' => '',
+                            'display' => 'seamless',
+                            'layout' => 'block',
+                            'prefix_label' => 0,
+                            'prefix_name' => 0,
                         ),
                     ),
                     'parent_repeater' => 'field_6392f441d86e3',
@@ -1541,6 +1324,64 @@ acf_add_local_field_group( array(
             'ui' => 1,
         ),
         array(
+            'key' => 'field_63e452dbe6b86',
+            'label' => '简单分组',
+            'name' => 'list_group',
+            'aria-label' => '',
+            'type' => 'group',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'layout' => 'block',
+            'sub_fields' => array(
+                array(
+                    'key' => 'field_63e45324e6b87',
+                    'label' => 'qwe',
+                    'name' => 'qwe',
+                    'aria-label' => '',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'field_63e4532be6b88',
+                    'label' => 'qwr',
+                    'name' => 'qwr',
+                    'aria-label' => '',
+                    'type' => 'text',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+        ),
+        array(
             'key' => 'field_63856f5ccbb8d',
             'label' => '选项卡（测试中）',
             'name' => '',
@@ -1739,98 +1580,98 @@ acf_add_local_field_group( array(
                         'id' => '',
                     ),
                     'message' => '<div class="user-data">
-				<div class="data-item">
-						<div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
-						<div class="right">
-								<div class="amount"><span class="num">100</span>万</div>
-								<div class="desc">注册客户数</div>
-						</div>
-				</div>
-				<div class="data-item">
-						<div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
-						<div class="right">
-								<div class="amount"><span class="num">1500</span>万</div>
-								<div class="desc">最高同时在线人数</div>
-						</div>
-				</div>
-				<div class="data-item">
-						<div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
-						<div class="right">
-								<div class="amount"><span class="num">2000</span>万</div>
-								<div class="desc">终端用户数</div>
-						</div>
-				</div>
-		</div>
-		<style>
-				.user-data {
-						position: absolute;
-						left: 50%;
-						transform: translate(-50%, -50%);
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						width: 1200px;
-						height: 100px;
-						border: 1px solid #fff;
-						border-radius: 8px;
-						background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
-						box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
-						-webkit-backdrop-filter: blur(27px);
-						backdrop-filter: blur(27px);
-						z-index: 20;
-				}
-
-				.data-item {
-						width: 33.33333%;
-						height: 66px;
-						position: relative;
-						display: flex;
-						align-items: center;
-				}
-
-				.icon {
-						margin-left: 105px;
-						width: 70px;
-						height: 70px;
-						background-size: cover;
-						background-repeat: no-repeat;
-				}
-
-				.right {
-						margin-left: 16px;
-						font-size: 14px;
-						color: #191919;
-				}
-
-				.amount {
-						height: 44px;
-						line-height: 44px;
-				}
-
-				.num {
-						font-family: PingFangSC-Medium;
-						color: #0256ff;
-						font-size: 36px;
-				}
-
-				.desc {
-						height: 22px;
-						line-height: 22px;
-				}
-
-				.user-data .data-item:after {
-						position: absolute;
-						right: 0;
-						content: "";
-						width: 2px;
-						height: 48px;
-						background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
-				}
-
-				.user-data {
-						margin-top: 8em;
-				}
-		</style>',
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">100</span>万</div>
+									<div class="desc">注册客户数</div>
+							</div>
+					</div>
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">1500</span>万</div>
+									<div class="desc">最高同时在线人数</div>
+							</div>
+					</div>
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">2000</span>万</div>
+									<div class="desc">终端用户数</div>
+							</div>
+					</div>
+			</div>
+			<style>
+					.user-data {
+							position: absolute;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: 1200px;
+							height: 100px;
+							border: 1px solid #fff;
+							border-radius: 8px;
+							background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
+							box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
+							-webkit-backdrop-filter: blur(27px);
+							backdrop-filter: blur(27px);
+							z-index: 20;
+					}
+	
+					.data-item {
+							width: 33.33333%;
+							height: 66px;
+							position: relative;
+							display: flex;
+							align-items: center;
+					}
+	
+					.icon {
+							margin-left: 105px;
+							width: 70px;
+							height: 70px;
+							background-size: cover;
+							background-repeat: no-repeat;
+					}
+	
+					.right {
+							margin-left: 16px;
+							font-size: 14px;
+							color: #191919;
+					}
+	
+					.amount {
+							height: 44px;
+							line-height: 44px;
+					}
+	
+					.num {
+							font-family: PingFangSC-Medium;
+							color: #0256ff;
+							font-size: 36px;
+					}
+	
+					.desc {
+							height: 22px;
+							line-height: 22px;
+					}
+	
+					.user-data .data-item:after {
+							position: absolute;
+							right: 0;
+							content: "";
+							width: 2px;
+							height: 48px;
+							background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
+					}
+	
+					.user-data {
+							margin-top: 8em;
+					}
+			</style>',
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
@@ -1919,7 +1760,7 @@ acf_add_local_field_group( array(
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
     'active' => true,
-    'description' => '简简单单的描述',
+    'description' => '功能强大且丰富的广告',
     'show_in_rest' => 0,
 ) );
 

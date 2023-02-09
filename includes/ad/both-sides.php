@@ -19,9 +19,9 @@ if ( wp_is_mobile() ) {
 }
 
 function magick_ad_both_sides( $content ) {
-    //开启广告
-    if ( magic_get_ad_both_sides( 'both_sides_hide' ) == '1' ) {
 
+    if ( magic_get_ad_both_sides( 'both_sides_hide' ) == '1' ) {
+        //开启广告
         echo magick_both_sides_content();
 
     } else {

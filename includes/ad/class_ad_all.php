@@ -5,7 +5,9 @@
 
 function magick_get_add_ad_all() {
     $arr = array();
+
     $arr = get_field( 'add_ad_all', 'options' );
+
     return $arr;
 }
 ;

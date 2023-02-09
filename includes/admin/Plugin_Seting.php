@@ -2,7 +2,7 @@
 //广告插件配置
 
 //隐藏字段值
-magick_option_acf();
+//magick_option_acf();
 
 function magick_option_acf() {
     $a = get_field( 'acf_hide', 'options' );

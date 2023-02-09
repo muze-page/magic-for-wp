@@ -64,7 +64,7 @@
                                 "sub_fields": [
                                     {
                                         "key": "field_63e2178e29143",
-                                        "label": "广告内容",
+                                        "label": "内容",
                                         "name": "",
                                         "aria-label": "",
                                         "type": "tab",
@@ -169,8 +169,8 @@
                                                 },
                                                 "message": "",
                                                 "default_value": 0,
-                                                "ui_on_text": "显示水印",
-                                                "ui_off_text": "隐藏水印",
+                                                "ui_on_text": "显示",
+                                                "ui_off_text": "隐藏",
                                                 "ui": 1
                                             }
                                         ]
@@ -280,240 +280,6 @@
                                                 "parent_repeater": "field_639c19d6607bd"
                                             }
                                         ]
-                                    }
-                                ],
-                                "min": "",
-                                "max": ""
-                            },
-                            "layout_63d644594ba6c": {
-                                "key": "layout_63d644594ba6c",
-                                "name": "ad_test",
-                                "label": "测试内容",
-                                "display": "block",
-                                "sub_fields": [
-                                    {
-                                        "key": "field_63d6469cc239a",
-                                        "label": "内容",
-                                        "name": "",
-                                        "aria-label": "",
-                                        "type": "tab",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "placement": "top",
-                                        "endpoint": 0
-                                    },
-                                    {
-                                        "key": "field_63d6446c4ba6d",
-                                        "label": "详细选项",
-                                        "name": "详细选项",
-                                        "aria-label": "",
-                                        "type": "wysiwyg",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "default_value": "",
-                                        "tabs": "all",
-                                        "toolbar": "basic",
-                                        "media_upload": 1,
-                                        "delay": 1
-                                    },
-                                    {
-                                        "key": "field_63d6477f8ffc2",
-                                        "label": "配置",
-                                        "name": "",
-                                        "aria-label": "",
-                                        "type": "tab",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "placement": "top",
-                                        "endpoint": 0
-                                    },
-                                    {
-                                        "key": "field_63d647918ffc3",
-                                        "label": "是否悬浮",
-                                        "name": "是否悬浮",
-                                        "aria-label": "",
-                                        "type": "true_false",
-                                        "instructions": "在有些位置可能不起作用",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "message": "悬浮显示广告",
-                                        "default_value": 0,
-                                        "ui": 0,
-                                        "ui_on_text": "",
-                                        "ui_off_text": ""
-                                    },
-                                    {
-                                        "key": "field_63d647d18ffc4",
-                                        "label": "位置",
-                                        "name": "位置",
-                                        "aria-label": "",
-                                        "type": "button_group",
-                                        "instructions": "默认为顶部",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "choices": {
-                                            "0:默认": "0:默认",
-                                            "1:顶部": "1:顶部",
-                                            "2:底部": "2:底部"
-                                        },
-                                        "allow_null": 0,
-                                        "default_value": "",
-                                        "layout": "horizontal",
-                                        "return_format": "value"
-                                    },
-                                    {
-                                        "key": "field_63d648178ffc5",
-                                        "label": "距离",
-                                        "name": "距离",
-                                        "aria-label": "",
-                                        "type": "range",
-                                        "instructions": "距离顶部或底部的距离，单位为px",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "default_value": "",
-                                        "min": "",
-                                        "max": "",
-                                        "step": "",
-                                        "prepend": "",
-                                        "append": ""
-                                    }
-                                ],
-                                "min": "",
-                                "max": ""
-                            },
-                            "layout_63e34f77e4485": {
-                                "key": "layout_63e34f77e4485",
-                                "name": "ad_out_bounds",
-                                "label": "界外广告",
-                                "display": "block",
-                                "sub_fields": [
-                                    {
-                                        "key": "field_63e35027e4489",
-                                        "label": "内容",
-                                        "name": "",
-                                        "aria-label": "",
-                                        "type": "tab",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "placement": "top",
-                                        "endpoint": 0
-                                    },
-                                    {
-                                        "key": "field_63e34fd2e4487",
-                                        "label": "左边",
-                                        "name": "lift_editor",
-                                        "aria-label": "",
-                                        "type": "wysiwyg",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "tabs": "all",
-                                        "toolbar": "full",
-                                        "media_upload": 1,
-                                        "default_value": "",
-                                        "delay": 0
-                                    },
-                                    {
-                                        "key": "field_63e34ff8e4488",
-                                        "label": "右边",
-                                        "name": "right_editor",
-                                        "aria-label": "",
-                                        "type": "wysiwyg",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "tabs": "all",
-                                        "toolbar": "full",
-                                        "media_upload": 1,
-                                        "default_value": "",
-                                        "delay": 0
-                                    },
-                                    {
-                                        "key": "field_63e3503be448a",
-                                        "label": "配置",
-                                        "name": "",
-                                        "aria-label": "",
-                                        "type": "tab",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "placement": "top",
-                                        "endpoint": 0
-                                    },
-                                    {
-                                        "key": "field_63e35046e448b",
-                                        "label": "距离",
-                                        "name": "distance",
-                                        "aria-label": "",
-                                        "type": "range",
-                                        "instructions": "",
-                                        "required": 0,
-                                        "conditional_logic": 0,
-                                        "wrapper": {
-                                            "width": "",
-                                            "class": "",
-                                            "id": ""
-                                        },
-                                        "default_value": "",
-                                        "min": "",
-                                        "max": "",
-                                        "step": "",
-                                        "prepend": "",
-                                        "append": ""
                                     }
                                 ],
                                 "min": "",
@@ -724,6 +490,23 @@
                                 "display": "block",
                                 "sub_fields": [
                                     {
+                                        "key": "field_63e44f39b5925",
+                                        "label": "内容",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
                                         "key": "field_6392f441d86e5",
                                         "label": "图片",
                                         "name": "img",
@@ -763,6 +546,61 @@
                                             "id": ""
                                         },
                                         "return_format": ""
+                                    },
+                                    {
+                                        "key": "field_63e44f45b5926",
+                                        "label": "配置",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_63e44f5ab5927",
+                                        "label": "选项",
+                                        "name": "option",
+                                        "aria-label": "",
+                                        "type": "group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "layout": "block",
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_63e44f97b5928",
+                                                "label": "隐藏水印",
+                                                "name": "watermark",
+                                                "aria-label": "",
+                                                "type": "true_false",
+                                                "instructions": "默认隐藏水印，水印将显示在图片中的右下角",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "message": "",
+                                                "default_value": 0,
+                                                "ui_on_text": "显示",
+                                                "ui_off_text": "隐藏",
+                                                "ui": 1
+                                            }
+                                        ]
                                     }
                                 ],
                                 "min": "",
@@ -876,85 +714,29 @@
                                 "ui": 1
                             },
                             {
-                                "key": "field_6392f441d86f4",
-                                "label": "是否显示",
-                                "name": "judge",
+                                "key": "field_63e45112a43f0",
+                                "label": "克隆一下",
+                                "name": "11_",
                                 "aria-label": "",
-                                "type": "button_group",
+                                "type": "clone",
                                 "instructions": "",
                                 "required": 0,
                                 "conditional_logic": 0,
                                 "wrapper": {
-                                    "width": "30",
+                                    "width": "",
                                     "class": "",
                                     "id": ""
                                 },
-                                "choices": [
-                                    "隐藏",
-                                    "展示",
-                                    "随机"
+                                "clone": [
+                                    "field_6385de2151212",
+                                    "field_63e2fc02593a7",
+                                    "field_6385de5551213",
+                                    "field_6385de6d51214"
                                 ],
-                                "allow_null": 0,
-                                "default_value": 1,
-                                "layout": "horizontal",
-                                "return_format": "value"
-                            },
-                            {
-                                "key": "field_6392f441d86f5",
-                                "label": "显示平台",
-                                "name": "platform",
-                                "aria-label": "",
-                                "type": "select",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "33",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "choices": [
-                                    "全平台",
-                                    "仅电脑端",
-                                    "仅手机端"
-                                ],
-                                "default_value": false,
-                                "allow_null": 0,
-                                "multiple": 0,
-                                "ui": 0,
-                                "return_format": "value",
-                                "ajax": 0,
-                                "placeholder": ""
-                            },
-                            {
-                                "key": "field_6392f441d86f6",
-                                "label": "显示位置",
-                                "name": "position",
-                                "aria-label": "",
-                                "type": "select",
-                                "instructions": "",
-                                "required": 0,
-                                "conditional_logic": 0,
-                                "wrapper": {
-                                    "width": "33",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "choices": [
-                                    "默认",
-                                    "文章内容顶部",
-                                    "文章内容底部",
-                                    "文章内容第三段",
-                                    "仅文章顶部",
-                                    "仅文章底部"
-                                ],
-                                "default_value": false,
-                                "allow_null": 0,
-                                "multiple": 0,
-                                "ui": 0,
-                                "return_format": "value",
-                                "ajax": 0,
-                                "placeholder": ""
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
                             }
                         ],
                         "parent_repeater": "field_6392f441d86e3"
@@ -1539,6 +1321,64 @@
                 "ui": 1
             },
             {
+                "key": "field_63e452dbe6b86",
+                "label": "简单分组",
+                "name": "list_group",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_63e45324e6b87",
+                        "label": "qwe",
+                        "name": "qwe",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_63e4532be6b88",
+                        "label": "qwr",
+                        "name": "qwr",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    }
+                ]
+            },
+            {
                 "key": "field_63856f5ccbb8d",
                 "label": "选项卡（测试中）",
                 "name": "",
@@ -1825,7 +1665,7 @@
         "instruction_placement": "label",
         "hide_on_screen": "",
         "active": true,
-        "description": "简简单单的描述",
+        "description": "功能强大且丰富的广告",
         "show_in_rest": 0
     },
     {

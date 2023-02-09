@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WordPress 的魔法插件
+Plugin Name: WordPress 的魔法广告插件
 Plugin URI: https://dongbd.com/
 Description: 控制您站点的广告位
 Version: 1.6.0
@@ -36,3 +36,10 @@ function test_top() {
 $a = get_stylesheet_uri();
 define( 'test', $a );
 
+//测试下
+
+function magic_get_ad_list_group( $str ) {
+    $arr = get_field( 'list_group', 'options' );
+    $v = $arr[ $str ];
+    return $v;
+}
