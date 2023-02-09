@@ -43,34 +43,34 @@ function magick_both_sides_content() {
     $top = magic_get_ad_jwai( 'top' );
 
     ?>
-    <div id = 'add' class = 'add'>
-    <div class = 'go-top left-s'>
+    <div id = 'magick_ad_both_sides' class = 'magick_ad_both_sides'>
+    <div class = 'magick_ad_go-top magick_ad_left-s'>
     <?php  echo $left ?>
 
     </div>
 
-    <div class = 'go-top right-s'>
+    <div class = 'magick_ad_go-top magick_ad_right-s'>
     <?php  echo $right ?>
     </div>
     </div>
     </div>
 
     <style>
-    .add {
+    .magick_ad_both_sides {
         opacity: 0;
     }
 
-    .left-s {
+    .magick_ad_both_sides >.magick_ad_left-s {
         left: <?php echo $sides;
         ?>px;
     }
 
-    .right-s {
+    .magick_ad_both_sides >.magick_ad_right-s {
         right: <?php echo $sides;
         ?>px;
     }
 
-    .go-top {
+    .magick_ad_both_sides > .magick_ad_go-top {
         position: fixed;
         /* 设置fixed固定定位 */
         top: <?php echo $top;
@@ -81,7 +81,7 @@ function magick_both_sides_content() {
 
     }
 
-    .go-top a {
+    .magick_ad_both_sides > .magick_ad_go-top span {
         display: block;
         /* 将<a>标签设为块元素，用于美化样式 */
         text-decoration: none;
@@ -100,20 +100,20 @@ function magick_both_sides_content() {
         /* 设置文字间距 */
 
         width: 180px;
-        height: auto;
+        height: 500px;
     }
 
-    .isashow {
+    .magick_ad_isashow {
         opacity: 1;
-        animation: fadeIn 1s;
+        animation: magick_ad_fadeIn 1s;
     }
 
-    .noshow {
+    .magick_ad_noshow {
         opacity: 0;
-        animation: fadeOut 1s;
+        animation: magick_ad_fadeOut 1s;
     }
 
-    @keyframes fadeOut {
+    @keyframes magick_ad_fadeOut {
         from {
             opacity: 1
         }
@@ -123,7 +123,7 @@ function magick_both_sides_content() {
         }
     }
 
-    @keyframes fadeIn {
+    @keyframes magick_ad_fadeIn {
         from {
             opacity: 0
         }
@@ -147,12 +147,12 @@ function magick_both_sides_content() {
 
             if ( document.body.scrollTop > 300 || document.documentElement.scrollTop > 300 ) {
                 //显示
-                document.getElementById( 'add' ).classList.add( 'isashow' );
-                document.getElementById( 'add' ).classList.remove( 'noshow' );
+                document.getElementById( 'magick_ad_both_sides' ).classList.add( 'magick_ad_isashow' );
+                document.getElementById( 'magick_ad_both_sides' ).classList.remove( 'magick_ad_noshow' );
             } else {
                 //隐藏
-                document.getElementById( 'add' ).classList.add( 'noshow' );
-                document.getElementById( 'add' ).classList.remove( 'isashow' );
+                document.getElementById( 'magick_ad_both_sides' ).classList.add( 'magick_ad_noshow' );
+                document.getElementById( 'magick_ad_both_sides' ).classList.remove( 'magick_ad_isashow' );
             }
         }
         ;
