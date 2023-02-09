@@ -10,7 +10,7 @@ function add_diy_menu() {
 
     add_menu_page( __( '魔法菜单' ), __( '魔法菜单' ), 'administrator', 'magick-census-single', false, 'dashicons-visibility' );
     add_submenu_page( 'magick-census-single', __( '发文统计' ), __( '发文统计' ), 'administrator', 'magick-census-single', 'magick_census_single_content' );
-    add_submenu_page( 'magick-census-single', __( '销售统计' ), __( '销售统计' ), 'administrator', '999', 'yjw_submenu_02_function' );
+    add_submenu_page( 'magick-census-single', __( '销售统计' ), __( '销售统计' ), 'administrator', 'magick-census-shop', 'magick_censcus_shop_content' );
 
     // submenu hook
     do_action( 'yjw_add_diy_submenu' );
@@ -18,6 +18,8 @@ function add_diy_menu() {
 
 //发文统计
 require_once dirname( __FILE__ ) . '/census-single.php';
+//销售统计
+require_once dirname( __FILE__ ) . '/censcus-shop.php';
 
 /**
 * @internal 永远不要在回调中定义函数。
@@ -36,7 +38,8 @@ function test111( $args ) {
     获取我们使用register_setting（）注册的设置的值
     <br />
     <span>
-    <?php $options = get_option( 'wporg_options' ); ?>
+    <?php $options = get_option( 'wporg_options' );
+    ?>
     您的选项是：<?php p( $options );
     ?>
     </span>
@@ -49,6 +52,8 @@ function test111( $args ) {
 function wporg_settings_init() {
     //为“wporg”页面注册新设置。
     register_setting( 'wporg', 'wporg_options' );
+    //注册一个选择选项框设置
+    register_setting( 'wporg', 'wporg_options_choise' );
 
     // 在“wporg”页面中注册一个新部分。
     add_settings_section(
@@ -207,3 +212,5 @@ function wporg_options_page_htmls() {
     </div>
     <?php
 }
+
+//尝试添加一个开关

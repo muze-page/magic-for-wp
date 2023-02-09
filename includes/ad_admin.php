@@ -1,4 +1,5 @@
 <?php
+
 //载入推荐安装插件
 require_once dirname( __FILE__ ) . '/admin/plugins/plugins.php';
 
@@ -31,8 +32,6 @@ if ( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
     require_once dirname( __FILE__ ) . '/admin/Plugin_Seting.php';
 
     //载入后台用文件
-
-
 
     //载入广告相关
 

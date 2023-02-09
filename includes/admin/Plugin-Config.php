@@ -8,11 +8,12 @@
 */
 
 //插件管理
+
+
  //设置按钮
- add_filter('plugin_action_links_'.plugin_basename(__FILE__), function($links){
-    $links[] = '<a href="'.get_admin_url(null, 'admin.php?page=theme-general-settings') . '">' . __('设置','n') . '</a>';
-    return $links;
-});
+
+
+
 
 
  //增加插件信息
@@ -23,6 +24,8 @@ add_filter('plugin_row_meta',function($links, $file) {
     }
     return $links;
 }, 10, 2);
+
+
 
 
 //显示菜单
