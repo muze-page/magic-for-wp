@@ -1,119 +1,254 @@
-<body>
-    
-    <div class="a">1<p>sadfasd;fkja;slkdfj;lkasjdf;lkasjd;flkajs;dlkfja;slkdjf</p></div>
-    <div class="a">2</div>
-    <div class="a">3</div>
-    <div class="a">4</div>
-    <div class="a">5</div>
-    <!--
-    <div class="b">
-        222
+<script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.js"></script>
 
-        <div class="c left">
-            左-广告啊
-            <img src="http://magick.plugin/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg" />
+
+<div id='tc-ad'>
+    <button class='tc-button' :class="{ 'actives': isActive}" @click='switchButton'> {{msg}}</button>
+    <transition name='fade'>
+        <div class='tc-box' v-if='show'>
+            <div class='ad-box'>
+                <a href='https://dongbd.com/wp-content/uploads/app/0329/index.html' target='_blank'>
+                    <img src='https://dongbd.com/wp-content/uploads/2022/10/1665676987.gif' />
+                </a>
+            </div>
         </div>
-        <div class="c right">
-            <img src="http://magick.plugin/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg" />
-            右边-广告啊
-        </div>
-
-    </div>
-    -->
-    <div class="a">6</div>
-
-<div class="add">
-    <div class="go-top left-s">
-        <a href="#">
-            <img src="http://magick.plugin/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg" />
-        </a>
-
-    </div>
-
-    <div class="go-top right-s">
-        <a href="#">
-            <img src="http://magick.plugin/wp-content/uploads/2014/01/dsc20050315_145007_132.jpg" />
-            <p>sadfasd;fkja;slkdfj;lkasjdf;lkasjd;flkajs;dlkfja;slkdjf</p>
-        </a>
-    </div>
+    </transition>
 </div>
+<script>
 
-</body>
+    const App_adtc = {
+        data() {
+            return {
+                msg: '︾', //按钮初始值
+                show: true,
+                isActive: true
+            }
+        }
+        ,
+        methods: {
+            switchButton() {
+                //判断内容框展示
+                this.show = !this.show
+                //判断单击按钮动画
+                this.isActive = !this.isActive
+                if (this.show == true) {
+                    this.msg = '︾', //关闭广告
+                        document.querySelector('body').setAttribute('style', 'padding-bottom: 70px;');
+                    //开启预留空间
+                } else {
+                    this.msg = '︽';
+                    //开启广告
+                    document.querySelector('body').setAttribute('style', 'padding-bottom: 0px;');
+                    //关闭预留空间
+                }
+            }
+            ,
+        }
+        ,
+        created: function () {
+            document.querySelector('body').setAttribute('style', 'padding-bottom: 70px;');
+            //初始化开启预留空间
+        }
+        ,
+    }
+
+    const app_adtc = Vue.createApp(App_adtc);
+    app_adtc.mount('#tc-ad');
+
+</script>
 <style>
-    .left-s {
-        left: 100px;
-    }
-
-    .right-s {
-        right: 100px;
-    }
-
-    .go-top {
-        position: fixed;
-        /* 设置fixed固定定位 */
-        bottom: 200px;
-        /* 距离浏览器窗口下边框20px */
-        word-break:break-all;/*自动换行*/
- 
-    }
-
-    .go-top a {
+    .tc-box {
         display: block;
-        /* 将<a>标签设为块元素，用于美化样式 */
-        text-decoration: none;
-        /* 取消超链接下画线 */
-        color: #333;
-        /* 设置文本颜色 */
-        background-color: #f2f2f2;
-        /* 设置背景颜色 */
-        border: 1px solid #ccc;
-        /* 设置边框样式 */
+        width: 100% !important;
+        height: auto;
+        bottom: 0px;
+        clear: none !important;
+        float: none !important;
+        left: 0px;
+        margin: 0px !important;
+        max-height: none !important;
+        max-width: none !important;
+        opacity: 1;
+        overflow: visible !important;
+        padding: 0px !important;
+        position: fixed;
+        right: auto !important;
+        top: auto !important;
+        /*vertical-align: baseline !important;
+            */
+        visibility: visible !important;
+        z-index: 2147483647;
+        background: rgb(250, 250, 250) !important;
+    }
+
+    .ad-box {
+        max-width: 720px;
+        max-height: 90px;
+        margin: 0 auto;
+
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .on_ad {
+        position: fixed;
+        bottom: 20px;
+    }
+
+    /*动画*/
+    .tc-button {
+        bottom: 10px;
+        position: fixed;
+        animation: myButton 0.1s;
+        padding: 5px 15px;
+        cursor: pointer;
+        left: 0px;
+        border: 0px;
+
+    }
+
+    @keyframes myButton {
+        from {
+            bottom: 70px;
+            padding: 10px 20px;
+        }
+
+        to {
+            bottom: 10px;
+            padding: 5px 15px;
+        }
+    }
+
+    .actives {
+        animation: myfirst 0.1s;
+        bottom: 70px;
+        position: fixed;
         padding: 10px 20px;
-        /* 设置内边距 */
-        border-radius: 5px;
-        /* 设置圆角矩形 */
-        letter-spacing: 2px;
-        /* 设置文字间距 */
+        cursor: pointer;
+        left: 0px;
+        border: 0px;
 
-        width: 180px;
-        height: 500px;
     }
 
-    .a {
-        width: 200px;
-        height: 500px;
-        background-color: pink;
-        margin: 0 auto;
-        padding: 20px;
+    @keyframes myfirst {
+        from {
+            bottom: 10px;
+            padding: 5px 15px;
+        }
+
+        to {
+            bottom: 70px;
+            padding: 10px 20px;
+        }
     }
 
-    .b {
-        width: 1200px;
-        margin: 0 auto;
+    /*核心内容框动画*/
+    .tc-box {
+        animation: myTc 0.1s;
 
-        background-color: red;
-        height: 20px;
-
-        position: sticky;
-        bottom: 500px;
+        display: flex;
+        justify-content: center;
+        /*align-items: center;
+            */
+        line-height: 38px;
     }
 
-    .c {
-        display: inline;
+    @keyframes myTc {
+        from {
+            height: 0px;
+        }
+
+        to {
+            height: 70px;
+        }
     }
 
-    .left {
-        position: absolute;
-        left: 10px;
+    .fade-enter-from {
+        height: 0px;
     }
 
-    .right {
-        position: absolute;
-        right: 10px;
+    .fade-enter-active {
+        transition: all 0.1s ease;
     }
 
-    img {
-        width: 100px;
-        height: 100px;
+    .fade-enter-to {
+        height: 70px;
+    }
+
+    .fade-leave-from {
+        height: 70px;
+    }
+
+    .fade-leave-active {
+        transition: all 0.1s ease;
+    }
+
+    .fade-leave-to {
+        height: 0px;
+    }
+
+    /*广告内容样式*/
+
+    .ad-box img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        image-rendering: -webkit-optimize-contrast;
+        border: 0;
+        /*vertical-align: baseline;
+            */
+    }
+
+    /*移动端优化样式*/
+    @media screen and (min-width: 768px) {
+
+        .actives {
+            bottom: 90px
+        }
+
+        @keyframes myButton {
+            from {
+                bottom: 90px;
+            }
+
+            to {
+                bottom: 10px;
+            }
+        }
+
+        @keyframes myfirst {
+            from {
+                bottom: 10px;
+            }
+
+            to {
+                bottom: 90px;
+            }
+        }
+
+        @keyframes myTc {
+            from {
+                height: 0px;
+            }
+
+            to {
+                height: 90px;
+            }
+        }
+
+        .fade-enter-to {
+            height: 90px;
+        }
+
+        .fade-leave-from {
+            height: 90px;
+        }
+
+    }
+
+    /*移动端样式*/
+    @media screen and (max-width: 768px) {
+        #tc-ad {
+            display: none;
+        }
     }
 </style>

@@ -255,6 +255,10 @@ class Magick_Ad_Content {
 		//拿到配置选项
         return $arr;
     }
+
+
+    //处理Cookie
+    
 }
 ;
 //end Magick_Ad_Content
