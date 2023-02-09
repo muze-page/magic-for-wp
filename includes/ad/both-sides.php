@@ -3,10 +3,10 @@
 
 //拿到设置
 
-function magic_get_ad_jwai( $str ) {
-    $arr = get_field( 'ad_jwai', 'options' );
-    $arr = $arr[ $str ];
-    return $arr;
+function magic_get_ad_both_sides( $str ) {
+    $arr = get_field( 'ad_both_sides', 'options' );
+    $v = $arr[ $str ];
+    return $v;
 }
 
 //移动端关闭广告
@@ -20,7 +20,7 @@ if ( wp_is_mobile() ) {
 
 function magick_ad_both_sides( $content ) {
     //开启广告
-    if ( magic_get_ad_jwai( 'both_sides_hide' ) == '1' ) {
+    if ( magic_get_ad_both_sides( 'both_sides_hide' ) == '1' ) {
 
         echo magick_both_sides_content();
 
@@ -34,13 +34,13 @@ function magick_ad_both_sides( $content ) {
 
 function magick_both_sides_content() {
     //左边的内容
-    $left = magic_get_ad_jwai( 'left' );
+    $left = magic_get_ad_both_sides( 'left' );
     //右边的内容
-    $right = magic_get_ad_jwai( 'right' );
+    $right = magic_get_ad_both_sides( 'right' );
     //两端距离
-    $sides = magic_get_ad_jwai( 'sides' );
+    $sides = magic_get_ad_both_sides( 'sides' );
     //顶部距离
-    $top = magic_get_ad_jwai( 'top' );
+    $top = magic_get_ad_both_sides( 'top' );
 
     ?>
     <div id = 'magick_ad_both_sides' class = 'magick_ad_both_sides'>
