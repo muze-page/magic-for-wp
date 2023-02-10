@@ -128,14 +128,14 @@ function wporg_field_pill_cb( $args ) {
 
     <select
     id = "<?php echo esc_attr( $args['label_for'] ); ?>"
-    data-custom = "<?php echo esc_attr( $args['wporg_custom_data'] ); ?>"
+    
     name = "wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]">
-    <option value = 'red' <?php echo isset( $options[ $args[ 'label_for' ] ] ) ? ( selected( $options[ $args[ 'label_for' ] ], 'red', false ) ) : ( '' );
+    <option value = 'red' <?php echo   selected( $options[ 'wporg_field_pill' ], 'red', false )  ;
     ?>>
     <?php esc_html_e( '红色药丸', 'wporg' );
     ?>
     </option>
-    <option value = 'blue' <?php echo isset( $options[ $args[ 'label_for' ] ] ) ? ( selected( $options[ $args[ 'label_for' ] ], 'blue', false ) ) : ( '' );
+    <option value = 'blue' <?php echo   selected( $options[ 'wporg_field_pill' ], 'blue', false )  ;
     ?>>
     <?php esc_html_e( '蓝色药丸', 'wporg' );
     ?>

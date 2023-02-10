@@ -10,11 +10,6 @@
 //插件管理
 
 
- //设置按钮
-
-
-
-
 
  //增加插件信息
 add_filter('plugin_row_meta',function($links, $file) {
