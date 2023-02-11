@@ -9,7 +9,7 @@ Author URI: https://www.npc.ink/276641.html
 */
 
 //载入ACF用的设置文件
-//require_once dirname( __FILE__ ) . '/admin/ACF_Congif.php';
+//require_once dirname( __FILE__ ) . '/includes/admin/ACF_Congif.php';
 
 //载入后台相关设置选项
 require_once dirname( __FILE__ ) . '/includes/ad_admin.php';

@@ -762,7 +762,7 @@
             },
             {
                 "key": "field_6377620532919",
-                "label": "添加弹窗广告",
+                "label": "弹窗广告",
                 "name": "ad_notification",
                 "aria-label": "",
                 "type": "group",
@@ -1149,6 +1149,121 @@
                         "step": "",
                         "prepend": "",
                         "append": "px"
+                    }
+                ]
+            },
+            {
+                "key": "field_63e4572e63967",
+                "label": "底部横栏广告",
+                "name": "ad_bottom_bar",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_63e457c2f0c8e",
+                        "label": "是否启用",
+                        "name": "bottom_hide",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "此广告展示在全站底部",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui_on_text": "启用",
+                        "ui_off_text": "禁用",
+                        "ui": 1
+                    },
+                    {
+                        "key": "field_63e4574e63968",
+                        "label": "底部广告内容",
+                        "name": "bottom_content",
+                        "aria-label": "",
+                        "type": "wysiwyg",
+                        "instructions": "展示在全站底部的广告，图片推荐尺寸：720X90",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_63e457c2f0c8e",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "full",
+                        "media_upload": 1,
+                        "delay": 1
+                    },
+                    {
+                        "key": "field_63e45826f0c8f",
+                        "label": "弹出周期",
+                        "name": "bottom_eject",
+                        "aria-label": "",
+                        "type": "range",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_63e457c2f0c8e",
+                                    "operator": "==",
+                                    "value": "1"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 1,
+                        "min": 1,
+                        "max": 365,
+                        "step": "",
+                        "prepend": "",
+                        "append": "天"
+                    },
+                    {
+                        "key": "field_63e48e07724fa",
+                        "label": "开启调试",
+                        "name": "bottom_bar_debug",
+                        "aria-label": "",
+                        "type": "true_false",
+                        "instructions": "启用后，将在屏幕下方生成按钮，点击即可清理广告的Cookie，调试后记得关闭",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 0,
+                        "ui_on_text": "启用调试按钮",
+                        "ui_off_text": "关闭调试按钮",
+                        "ui": 1
                     }
                 ]
             },

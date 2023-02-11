@@ -765,7 +765,7 @@ acf_add_local_field_group( array(
         ),
         array(
             'key' => 'field_6377620532919',
-            'label' => '添加弹窗广告',
+            'label' => '弹窗广告',
             'name' => 'ad_notification',
             'aria-label' => '',
             'type' => 'group',
@@ -1152,6 +1152,121 @@ acf_add_local_field_group( array(
                     'step' => '',
                     'prepend' => '',
                     'append' => 'px',
+                ),
+            ),
+        ),
+        array(
+            'key' => 'field_63e4572e63967',
+            'label' => '底部横栏广告',
+            'name' => 'ad_bottom_bar',
+            'aria-label' => '',
+            'type' => 'group',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'layout' => 'block',
+            'sub_fields' => array(
+                array(
+                    'key' => 'field_63e457c2f0c8e',
+                    'label' => '是否启用',
+                    'name' => 'bottom_hide',
+                    'aria-label' => '',
+                    'type' => 'true_false',
+                    'instructions' => '此广告展示在全站底部',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui_on_text' => '启用',
+                    'ui_off_text' => '禁用',
+                    'ui' => 1,
+                ),
+                array(
+                    'key' => 'field_63e4574e63968',
+                    'label' => '底部广告内容',
+                    'name' => 'bottom_content',
+                    'aria-label' => '',
+                    'type' => 'wysiwyg',
+                    'instructions' => '展示在全站底部的广告，图片推荐尺寸：720X90',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'field_63e457c2f0c8e',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'tabs' => 'all',
+                    'toolbar' => 'full',
+                    'media_upload' => 1,
+                    'delay' => 1,
+                ),
+                array(
+                    'key' => 'field_63e45826f0c8f',
+                    'label' => '弹出周期',
+                    'name' => 'bottom_eject',
+                    'aria-label' => '',
+                    'type' => 'range',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'field_63e457c2f0c8e',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => 1,
+                    'min' => 1,
+                    'max' => 365,
+                    'step' => '',
+                    'prepend' => '',
+                    'append' => '天',
+                ),
+                array(
+                    'key' => 'field_63e48e07724fa',
+                    'label' => '开启调试',
+                    'name' => 'bottom_bar_debug',
+                    'aria-label' => '',
+                    'type' => 'true_false',
+                    'instructions' => '启用后，将在屏幕下方生成按钮，点击即可清理广告的Cookie，调试后记得关闭',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'message' => '',
+                    'default_value' => 0,
+                    'ui_on_text' => '启用调试按钮',
+                    'ui_off_text' => '关闭调试按钮',
+                    'ui' => 1,
                 ),
             ),
         ),
@@ -1580,98 +1695,98 @@ acf_add_local_field_group( array(
                         'id' => '',
                     ),
                     'message' => '<div class="user-data">
-					<div class="data-item">
-							<div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
-							<div class="right">
-									<div class="amount"><span class="num">100</span>万</div>
-									<div class="desc">注册客户数</div>
-							</div>
-					</div>
-					<div class="data-item">
-							<div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
-							<div class="right">
-									<div class="amount"><span class="num">1500</span>万</div>
-									<div class="desc">最高同时在线人数</div>
-							</div>
-					</div>
-					<div class="data-item">
-							<div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
-							<div class="right">
-									<div class="amount"><span class="num">2000</span>万</div>
-									<div class="desc">终端用户数</div>
-							</div>
-					</div>
-			</div>
-			<style>
-					.user-data {
-							position: absolute;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							display: flex;
-							align-items: center;
-							justify-content: center;
-							width: 1200px;
-							height: 100px;
-							border: 1px solid #fff;
-							border-radius: 8px;
-							background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
-							box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
-							-webkit-backdrop-filter: blur(27px);
-							backdrop-filter: blur(27px);
-							z-index: 20;
-					}
-	
-					.data-item {
-							width: 33.33333%;
-							height: 66px;
-							position: relative;
-							display: flex;
-							align-items: center;
-					}
-	
-					.icon {
-							margin-left: 105px;
-							width: 70px;
-							height: 70px;
-							background-size: cover;
-							background-repeat: no-repeat;
-					}
-	
-					.right {
-							margin-left: 16px;
-							font-size: 14px;
-							color: #191919;
-					}
-	
-					.amount {
-							height: 44px;
-							line-height: 44px;
-					}
-	
-					.num {
-							font-family: PingFangSC-Medium;
-							color: #0256ff;
-							font-size: 36px;
-					}
-	
-					.desc {
-							height: 22px;
-							line-height: 22px;
-					}
-	
-					.user-data .data-item:after {
-							position: absolute;
-							right: 0;
-							content: "";
-							width: 2px;
-							height: 48px;
-							background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
-					}
-	
-					.user-data {
-							margin-top: 8em;
-					}
-			</style>',
+                    <div class="data-item">
+                            <div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
+                            <div class="right">
+                                    <div class="amount"><span class="num">100</span>万</div>
+                                    <div class="desc">注册客户数</div>
+                            </div>
+                    </div>
+                    <div class="data-item">
+                            <div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
+                            <div class="right">
+                                    <div class="amount"><span class="num">1500</span>万</div>
+                                    <div class="desc">最高同时在线人数</div>
+                            </div>
+                    </div>
+                    <div class="data-item">
+                            <div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
+                            <div class="right">
+                                    <div class="amount"><span class="num">2000</span>万</div>
+                                    <div class="desc">终端用户数</div>
+                            </div>
+                    </div>
+            </div>
+            <style>
+                    .user-data {
+                            position: absolute;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 1200px;
+                            height: 100px;
+                            border: 1px solid #fff;
+                            border-radius: 8px;
+                            background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
+                            box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
+                            -webkit-backdrop-filter: blur(27px);
+                            backdrop-filter: blur(27px);
+                            z-index: 20;
+                    }
+    
+                    .data-item {
+                            width: 33.33333%;
+                            height: 66px;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                    }
+    
+                    .icon {
+                            margin-left: 105px;
+                            width: 70px;
+                            height: 70px;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                    }
+    
+                    .right {
+                            margin-left: 16px;
+                            font-size: 14px;
+                            color: #191919;
+                    }
+    
+                    .amount {
+                            height: 44px;
+                            line-height: 44px;
+                    }
+    
+                    .num {
+                            font-family: PingFangSC-Medium;
+                            color: #0256ff;
+                            font-size: 36px;
+                    }
+    
+                    .desc {
+                            height: 22px;
+                            line-height: 22px;
+                    }
+    
+                    .user-data .data-item:after {
+                            position: absolute;
+                            right: 0;
+                            content: "";
+                            width: 2px;
+                            height: 48px;
+                            background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
+                    }
+    
+                    .user-data {
+                            margin-top: 8em;
+                    }
+            </style>',
                     'new_lines' => '',
                     'esc_html' => 0,
                 ),
