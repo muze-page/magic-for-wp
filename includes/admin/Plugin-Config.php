@@ -64,15 +64,24 @@ add_action('wp_enqueue_scripts', function () {
 
 });
 //载入样式
+//判断当前活动主题
+$magick_theme_b2 = wp_get_theme(); // gets the current theme
+if ('B2 PRO' == $magick_theme_b2->name || 'B2 PRO' == $magick_theme_b2->parent_theme) {
+    //当前是B2主题
+    add_action('wp_head', 'magick_load_vues');
+} else {
+    //当前不是B2主题
+    add_action('wp_enqueue_scripts', 'magick_load_vue');
+}
+
 //载入所需VUE框架 - 顶部
 function magick_load_vue()
 {
     wp_enqueue_script('vue', plugin_dir_url(\dirname(__DIR__)) . 'assets/js/vue.global_v3.2.45.js', array(), '1.0.0', false);
 }
-//add_action( 'wp_enqueue_scripts', 'magick_load_vue' );
 
 //起冲突就用这个
-add_action('wp_head', 'magick_load_vues');
+
 function magick_load_vues()
 {
     $vue = plugin_dir_url(\dirname(__DIR__)) . 'assets/js/vue.global_v3.2.45.js';
