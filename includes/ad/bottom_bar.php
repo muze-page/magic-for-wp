@@ -3,19 +3,21 @@
 
 //获取选项配置
 
-function magic_get_ad_bottom_bar( $str ) {
-    $arr = get_field( 'ad_bottom_bar', 'options' );
-    $a = $arr[ $str ];
+function magic_get_ad_bottom_bar($str)
+{
+    $arr = get_field('ad_bottom_bar', 'options');
+    $a = $arr[$str];
     return $a;
 }
 
 //载入弹窗
 
-add_action( 'wp_footer', 'magick_ad_bottom_bar' );
+add_action('wp_footer', 'magick_ad_bottom_bar');
 
-function magick_ad_bottom_bar( $content ) {
+function magick_ad_bottom_bar($content)
+{
 
-    if ( magic_get_ad_bottom_bar( 'bottom_hide' ) == '1' ) {
+    if (magic_get_ad_bottom_bar('bottom_hide') == '1') {
         //开启广告
         echo magick_bottom_bar_content();
 
@@ -27,24 +29,22 @@ function magick_ad_bottom_bar( $content ) {
 
 }
 
-
-
-
 //准备内容
 
-function magick_bottom_bar_content() {
+function magick_bottom_bar_content()
+{
     //广告内容
-    $content = magic_get_ad_bottom_bar( 'bottom_content' );
+    $content = magic_get_ad_bottom_bar('bottom_content');
     //弹出周期
-    $eject = magic_get_ad_bottom_bar( 'bottom_eject' );
+    $eject = magic_get_ad_bottom_bar('bottom_eject');
     //清理Cookie
-    $debug = magic_get_ad_bottom_bar( 'bottom_bar_debug' );
+    $debug = magic_get_ad_bottom_bar('bottom_bar_debug');
     ?>
     <div id = 'magcik_ad_bottom_bar'>
     <button
 
     class = 'ad-bar-button'
-    :class = "{ 'ad-bar-actives': show}" 
+    :class = "{ 'ad-bar-actives': show}"
     @click = 'switchButton'
     v-html = 'msg'
     >
@@ -52,23 +52,26 @@ function magick_bottom_bar_content() {
         <transition name = 'ad-bar-fade'>
         <div class = 'bottom-bar-box' v-if = 'show'>
         <div class = 'bottom-bar-content'>
-        <?php //echo $content;
-        ?>
-       
+        <?php
+echo $content;
+    ?>
+
+       <!--
         <a href = 'https://dongbd.com/wp-content/uploads/app/0329/index.html' target = '_blank'>
         <img src = 'https://dongbd.com/wp-content/uploads/2022/10/1665676987.gif' />
         </a>
-       
+-->
+
         </div>
         </div>
         </transition>
-        <?php 
-  if( $debug == "1" ) {
-      echo "<button @click='clearAdBootomBarCookie()'>清理底部广告Cookie</button>";
-  }
-  
-  ?>
-  
+        <?php
+if ($debug == "1") {
+        echo "<button @click='clearAdBootomBarCookie()'>清理底部广告Cookie</button>";
+    }
+
+    ?>
+
         </div>
 
 
@@ -128,9 +131,9 @@ function magick_bottom_bar_content() {
             //有Cookie就隐藏广告
             show.value = false;
           }
-            
-  
-             
+
+
+
         }
 
               //延时加载
