@@ -2,24 +2,37 @@
 
 //销售统计
 
+//指定在统计商城后台添加echarts.js文件
+function magick_load_echarts_shop($hook)
+{
+    if ('%e7%bb%9f%e8%ae%a1%e8%8f%9c%e5%8d%95_page_magick-census-shop' != $hook) {
+        return;
+    }
+    wp_enqueue_script('echarts', plugin_dir_url(\dirname(__DIR__)) . 'assets/js/echarts_v5.4.0.js', array(), '1.0');
+}
+add_action('admin_enqueue_scripts', 'magick_load_echarts_shop');
+
 function magick_censcus_shop_content()
 {
-    $MA_arr = new MA_control();
+    //$MA_arr = new MA_control();
     //待发货数量
-    $watit_deliver = $MA_arr->magick_get_shop_watit_deliver();
+    //$watit_deliver = $MA_arr->magick_get_shop_watit_deliver();
     //最近7天商城实物销售总额
-    $actual_total_seven = $MA_arr->magick_get_shop_actual_total_seven();
+    //$actual_total_seven = $MA_arr->magick_get_shop_actual_total_seven();
     ?>
+    <!--
     <dl>
     <dt>商城待发货</dt>
-    <dd><?php echo $watit_deliver; ?></dd>
+    <dd><?php //echo $watit_deliver; ?></dd>
     <dt>最近7天商城销售总额</dt>
-    <dd><?php p($actual_total_seven);?></dd>
+    <dd><?php //p($actual_total_seven);?></dd>
     <dt>待研究</dt>
     <dd><?php //echo p($tj_vip); ?></dd>
     <dt>对比</dt>
-    <dd><?php //echo p($tj_vips); ?></dd>
+    <dd><?php //p($MA_arr->handle_array_separate($actual_total_seven['total_sales'])['time']);?></dd>
 </dl>
+-->
+<?php echo magick_shop_order_content(); ?>
 <?php
 
 }
@@ -73,13 +86,13 @@ class MA_control
     }
 
     //返回商城待发货订单
-        //返回商城待发货订单
-        public function magick_get_shop_watit_deliver()
-        {
-            $table_name = $this->wpdb->prefix . 'zrz_order';
-            $num = $this->wpdb->get_var("SELECT COUNT(*) FROM $table_name where order_state='f'");
-            return $num;
-        }//end magick_get_shop_watit_deliver()
+    //返回商城待发货订单
+    public function magick_get_shop_watit_deliver()
+    {
+        $table_name = $this->wpdb->prefix . 'zrz_order';
+        $num = $this->wpdb->get_var("SELECT COUNT(*) FROM $table_name where order_state='f'");
+        return $num;
+    } //end magick_get_shop_watit_deliver()
 
     //返回近七天，商城相关信息
     public function magick_get_shop_actual_total_seven()
@@ -156,7 +169,8 @@ class MA_control
             //处理下时间
 
             //$t = date("H:i:s", strtotime($time[$i]));
-            $t = $time[$i];
+            $aa = $time[$i];
+            $t = date("d", strtotime($aa));
             //总销售额
             $arr['total_sales'][$t] = $a[0]['total'];
             //总订单数
@@ -171,6 +185,28 @@ class MA_control
         return $arr;
     } //end magick_get_shop_actual_total_seven()
 
+    //写一个函数，对数组中的键和值分开后输出进行处理
+    public function handle_array_separate($array)
+    {
+        //取出其中的时间组成数组
+        //存储时间
+        $t = [];
+        //存储值
+        $v = [];
+        //存储返回值
+        $arr = [];
+        foreach ($array as $key => $value) {
+            //echo "键名是：" . $key . "值是：" . $value;
+            //echo "<br/>";
+            $t[] .= $key;
+            $v[] .= $value;
+        }
+        $arr['time'] = $t;
+        $arr['value'] = $v;
+        //取出其中的值组成新数组
+        return $arr;
+    }
+
 } //en class MA_control
 //初步目标
 //今天的商城总销售额，总订单数、总退款订单数、总退款，实际总收入
@@ -181,278 +217,290 @@ class MA_control
 //获取本周7天的商城订单已发货数量
 //获取本周7天的商城订单总金额
 
-//添加一个多选复选框
-
-//注册一个设置
-add_action('admin_init', 'magick_plugin_options');
-function magick_plugin_options()
+function magick_shop_order_content()
 {
-    // 首先，我们注册一个部分。这是必要的，因为所有未来的选项都必须属于一个。
-    add_settings_section(
-        'magick_settings_section', // 用于标识此部分以及用于注册选项的ID
-        '自定义设置', // 要在管理页面上显示的标题
-        'magick_plugin_options_callback', // 用于呈现节描述的回调
-        'general' // 添加此部分选项的页面
-    );
+    $MA_arr = new MA_control();
+    $get = $MA_arr->magick_get_shop_actual_total_seven();
+    //待发货
+    $watit_deliver = $MA_arr->magick_get_shop_watit_deliver();
+    //今日总销售额
+    $today_sale = $MA_arr->handle_array_separate($get['total_sales'])['value']['0'];
+    //今日总订单
+    $today_order = $MA_arr->handle_array_separate($get['total_order'])['value']['0'];
+    //今日总退款
+    $today_refund = $MA_arr->handle_array_separate($get['total_refund'])['value']['0'];
+    //今日总退款订单
+    $today_refund_order = $MA_arr->handle_array_separate($get['total_refund_order'])['value']['0'];
 
-    //添加一个下拉框选项
-    add_settings_field(
-        'option_id', // 用于标识整个主题中的字段的ID
-        '选择', // 选项接口元素左侧的标签
-        'magick_option_callback', // 负责呈现选项界面的函数的名称
-        'general', // 将显示此选项的页面
-        'magick_settings_section', // 此字段所属的节的名称
-        array( // 要传递给回调的参数数组。在这种情况下，只是一个描述。
-            '开始您的选择',
-        )
-    );
-
-    //注册这个设置
-    register_setting(
-        'general', //选项组
-        'magick_plugin_config', //选项名称,存储选项用
-    );
-} //结束magick_plugin_options
-/* ------------------------------------------------------------------------ *
- *节回调
- * ------------------------------------------------------------------------ */
-/**
- *此函数为“常规选项”页面提供简单说明。
- *
- *它是通过作为参数传递从“magick_plugin_options”函数调用的
- *在add_settings_section函数中。
- */
-function magick_plugin_options_callback()
-{
-    //拿到选项
-    $options = get_option('magick_plugin_config');
-    if ($options) {
-        echo "您选择的是：" . implode(',', $options['option_id']);
-        return;
-    } else {
-        echo "您没有选择值";
-        return;
-    }
-} //结束magick_plugin_options_callback
-
-//链接输入框设置的回调
-function magick_option_callback($args)
-{
-
-    // 首先，我们拿到选项
-    $options = get_option('magick_plugin_config');
-
-    $uwcc_checkbox_field_1 = isset($options['option_id']) ? (array) $options['option_id'] : [];
-    //name值很关键
     ?>
+    <?php //echo "配和下".implode(',', $MA_arr->handle_array_separate($get['total_sales'])['time'] )?>
 
-    <input type='checkbox' name='magick_plugin_config[option_id][]' <?php checked(in_array('Mastercard', $uwcc_checkbox_field_1), 1);?> value='Mastercard'>
-    <label>Mastercard</label>
-    <input type='checkbox' name='magick_plugin_config[option_id][]' <?php checked(in_array('Visa', $uwcc_checkbox_field_1), 1);?> value='Visa'>
-    <label>Visa</label>
-    <input type='checkbox' name='magick_plugin_config[option_id][]' <?php checked(in_array('Amex', $uwcc_checkbox_field_1), 1);?> value='Amex'>
-    <label>Amex</label>
+    <?php //p($MA_arr->handle_array_separate($get['total_sales']));?>
+    <section class="magick_shop_box">
+        <div class="content">
+            <div class="child-box">
+                <span>待发货</span>
+                <div class="child">
+                    <p><span><?php $watit_deliver ? print $watit_deliver : print "0";?></span>个</p>
+                    <span class="dashicons dashicons-store"></span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="child-box">
+                <span>今日总销售额（已减退款）</span>
+                <div class="child">
+                    <p><span><?php $today_sale ? print $today_sale : print "0";?></span>￥</p>
+                    <span class="dashicons dashicons-insert"></span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="child-box">
+                <span>今日总订单（已减退款）</span>
+                <div class="child">
+                    <p><span><?php $today_order ? print $today_order : print "0";?></span>个</p>
+                    <span class="dashicons dashicons-database-add"></span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="child-box">
+                <span>今日总退款</span>
+                <div class="child">
+                    <p><span><?php $today_refund ? print $today_refund : print "0";?></span>￥</p>
+                    <span class="dashicons dashicons-remove"></span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="child-box">
+                <span>今日总退款订单</span>
+                <div class="child">
+                    <p><span><?php $today_refund_order ? print $today_refund_order : print "0";?></span>个</p>
+                    <span class="dashicons dashicons-database-remove"></span>
+                </div>
+            </div>
+        </div>
 
-    <label for="option_id"> <?php echo $args[0]; ?></label>
+    </section>
 
-<?php
-
-} // end magick_option_callback
-
-/* ------------------------------------------------------------------------ *
- *设置注册
- * ------------------------------------------------------------------------ */
-/**
- *通过注册节来初始化主题选项页，
- *字段和设置。
- *
- *此函数使用“admin_init”钩子注册。
- */
-add_action('admin_init', 'sandbox_initialize_theme_options');
-function sandbox_initialize_theme_options()
-{
-    // 首先，我们注册一个部分。这是必要的，因为所有未来的选项都必须属于一个。
-    add_settings_section(
-        'general_settings_section', // 用于标识此部分以及用于注册选项的ID
-        '显示选项', // 要在管理页面上显示的标题
-        'sandbox_general_options_callback', // 用于呈现节描述的回调
-        'sandbox_theme_display_options' // 添加此部分选项的页面
-    );
-
-    //注册一个部分，用来显示效果
-    add_settings_section(
-        'general_settings_hcf',
-        '使用选项',
-        'option_test_hcf',
-        'sandbox_theme_display_options',
-    );
-
-    //节
-    // 接下来，我们将介绍用于切换内容元素可见性的字段。
-    add_settings_field(
-        'show_header', // 用于标识整个主题中的字段的ID
-        '头部', // 选项接口元素左侧的标签
-        'sandbox_toggle_header_callback', // 负责呈现选项界面的函数的名称
-        'sandbox_theme_display_options', // 将显示此选项的页面
-        'general_settings_section', // 此字段所属的节的名称
-        array( // 要传递给回调的参数数组。在这种情况下，只是一个描述。
-            '激活此设置以显示标题。',
-        )
-    );
-
-    //第二个字段
-    add_settings_field(
-        'show_content',
-        '内容',
-        'sandbox_toggle_content_callback',
-        'sandbox_theme_display_options',
-        'general_settings_section',
-        array(
-            '激活此设置以显示内容。',
-        )
-    );
-
-    //第三个字段
-    add_settings_field(
-        'show_footer',
-        '底部',
-        'sandbox_toggle_footer_callback',
-        'sandbox_theme_display_options',
-        'general_settings_section',
-        array(
-            '激活此设置以显示页脚。',
-        )
-    );
-
-    // 最后，我们用WordPress注册这些字段
-    register_setting(
-        'sandbox_theme_display_options', //选项组
-        'sandbox_theme_display_options' //选项名称
-    );
-} //结束sandbox_initialize_theme_options
-/* ------------------------------------------------------------------------ *
- *节回调
- * ------------------------------------------------------------------------ */
-/**
- *此函数为“常规选项”页面提供简单说明。
- *
- *它是通过作为参数传递从“sandbox_initialize_theme_options”函数调用的
- *在add_settings_section函数中。
- */
-function sandbox_general_options_callback()
-{
-    echo '<p>选择要显示的内容区域。</p>';
-} //结束sandbox_general_options_callback
-
-/* ------------------------------------------------------------------------ *
- *字段回调
- * ------------------------------------------------------------------------ */
-
-/**
- *此函数呈现用于切换头元素可见性的接口元素。
- *
- *它接受一个参数数组，并期望数组中的第一个元素是描述
- *将显示在复选框旁边。
- */
-function sandbox_toggle_header_callback($args)
-{
-
-    // 首先，我们阅读选项集合
-    $options = get_option('sandbox_theme_display_options');
-
-    // 接下来，我们更新name属性以在display options数组的上下文中访问该元素的ID
-    //在调用checked（）helper函数时，我们还访问了options集合的show_header元素
-    $html = '<input type="checkbox" id="show_header" name="sandbox_theme_display_options[show_header]" value="1" ' . checked(1, $options['show_header'], false) . '/>';
-
-    // 在这里，我们将获取数组的第一个参数，并将其添加到复选框旁边的标签中
-    $html .= '<label for="show_header"> ' . $args[0] . '</label>';
-
-    echo $html;
-} // end sandbox_toggle_header_callback
-
-//第二个设置回调函数
-function sandbox_toggle_content_callback($args)
-{
-    $options = get_option('sandbox_theme_display_options');
-    $html = '<input type="checkbox" id="show_content" name="sandbox_theme_display_options[show_content]" value="1" ' . checked(1, $options['show_content'], false) . '/>';
-    $html .= '<label for="show_content"> ' . $args[0] . '</label>';
-    echo $html;
-} // end sandbox_toggle_content_callback
-
-//第三个设置回调函数
-function sandbox_toggle_footer_callback($args)
-{
-
-    $options = get_option('sandbox_theme_display_options');
-    $html = '<input type="checkbox" id="show_footer" name="sandbox_theme_display_options[show_footer]" value="1" ' . checked(1, $options['show_footer'], false) . '/>';
-    $html .= '<label for="show_footer"> ' . $args[0] . '</label>';
-    echo $html;
-} // end sandbox_toggle_footer_callback
-
-//使用回调
-function magick_option_test_switch($a = '')
-{
-    if ($a) {
-        //有值
-        echo "您选择了";
-        return;
-    } else {
-        //无值
-        echo "您没有选择";
-        return;
-    }
+    <!--四栏分隔-->
+    <style>
+        .magick_four-column .content > div {
+  width: 600px;
+  height: 300px;
 }
-function option_test_hcf()
-{
-    $header = get_option('sandbox_theme_display_options')['show_header'];
-    $content = get_option('sandbox_theme_display_options')['show_content'];
-    $footer = get_option('sandbox_theme_display_options')['show_footer'];
+        </style>
+    <section class="magick_four-column">
+        <div class="content">
+            <!--最近7天总销售额-->
+            <div id="total-sales"></div>
+        </div>
+        <div class="content">
+            <!--最近7天总销售订单-->
+            <div id="total-order"></div>
+        </div>
+        <div class="content">
+            <!--最近7天总退款销售额-->
+            <div id="total-refund"></div>
+        </div>
+        <div class="content">
+            <!--最近7天总退款订单-->
+            <div id="total-refund-order"></div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        //最近7天总销售额
+        let total_sales = echarts.init(document.getElementById("total-sales"));
+        //最近7天总销售订单
+        let total_order = echarts.init(document.getElementById("total-order"));
+        //最近7天总退款销售额
+        let total_refund = echarts.init(document.getElementById("total-refund"));
+        //最近7天总退款订单
+        let total_refund_order = echarts.init(document.getElementById("total-refund-order"));
 
-    ?>
-
-    您的首页：<?php magick_option_test_switch($header);?>
-    <br />
-    您的内容：<?php magick_option_test_switch($content);?>
-    <br />
-    您的底部：<?php magick_option_test_switch($footer);?>
 
 
-<?php
+        // 指定图表的配置项和数据
+        let total_sales_option = {
+            title: {
+                text: "最近7天总销售额",
+            },
+            tooltip: {},
+            xAxis: {
+                type: 'category',
+                //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_sales'])['time'])) ?>]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    //data: [120, 200, 150, 80, 70, 110, 130],
+                     data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_sales'])['value'])) ?>],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+        };
 
+        let total_order_option = {
+            title: {
+                text: "最近7天总销售订单",
+            },
+            tooltip: {},
+            xAxis: {
+                type: 'category',
+                //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                 data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_order'])['time'])) ?>]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    //data: [120, 200, 150, 80, 70, 110, 130],
+                    data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_order'])['value'])) ?>],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+        };
+
+        let total_refund_option = {
+            title: {
+                text: "最近7天总退款销售额",
+            },
+            tooltip: {},
+            xAxis: {
+                type: 'category',
+                //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund'])['time'])) ?>],
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    //data: [120, 200, 150, 80, 70, 110, 130],
+                    data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund'])['value'])) ?>],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+        };
+
+        let total_refund_order_option = {
+            title: {
+                text: "最近7天总退款订单",
+            },
+            tooltip: {
+                valueFormatter: (value) => value.toFixed(2) + '￥'
+            },
+            xAxis: {
+                type: 'category',
+                //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund_order'])['value'])) ?>],
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    //data: [120, 200, 150, 80, 70, 110, 130],
+                    data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund_order'])['value'])) ?>],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        //最近7天总销售额
+        total_sales.setOption(total_sales_option);
+        //最近7天总销售订单
+        total_order.setOption(total_order_option);
+        //最近7天总退款销售额
+        total_refund.setOption(total_refund_option);
+        //最近7天总退款订单
+        total_refund_order.setOption(total_refund_order_option);
+
+
+    </script>
+    <style>
+.magick_shop_box {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  /*两端居中对齐,仅包含子元素*/
+  justify-content: space-evenly;
+  /*垂直居中,仅包含子元素*/
+  align-items: center;
+  /*换行*/
+  flex-wrap: wrap;
+}
+.magick_shop_box .content {
+  flex: 0 0 240px;
+}
+.magick_shop_box .content .child-box {
+  padding: 10px 20px;
+}
+.magick_shop_box .content .child-box > span {
+  font-size: 16px;
+  font-weight: bold;
+}
+.magick_shop_box .content .child-box .child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.magick_shop_box .content .child-box .child p span {
+  font-size: 26px;
+  font-weight: bold;
+}
+.magick_shop_box .content .child-box .child img {
+  width: 36px;
+  height: 36px;
+}
+.magick_shop_box .content .child-box .child > span {
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+}
+.magick_shop_box img {
+  width: 100%;
+  height: 100%;
+}
+.magick_four-column {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  /*两端居中对齐,仅包含子元素*/
+  justify-content: space-evenly;
+  /*垂直居中,仅包含子元素*/
+  align-items: center;
+  /*换行*/
+  flex-wrap: wrap;
+}
+.magick_four-column .content {
+  flex: 0 0 600px;
 }
 
-//添加主题菜单
-function sandbox_example_theme_menu()
-{
-    add_theme_page(
-        '沙盒主题', // 要在此页面的浏览器窗口中显示的标题。
-        '沙盒主题', // 要为此菜单项显示的文本
-        'administrator', // 哪种类型的用户可以看到此菜单项
-        'sandbox_theme_options', // The unique ID - that is, the slug - for this menu item
-        'sandbox_theme_display' // 呈现此菜单的页面时要调用的函数的名称
-    );
-} // end sandbox_example_theme_menu
-add_action('admin_menu', 'sandbox_example_theme_menu');
-
-function sandbox_theme_display()
-{
-    ?>
-    <!-- 在默认WordPress“wrap”容器中创建标题 -->
-    <div class="wrap">
-        <!-- 将图标添加到页面 -->
-
-        <h2><span class="dashicons dashicons-buddicons-topics"></span>沙盒主题选项</h2>
-        <!-- 在保存设置时调用WordPress函数以呈现错误。 -->
-        <?php settings_errors();?>
-        <!-- 创建用于呈现选项的表单 -->
-        <form method="post" action="options.php">
-            <!---->
-            <?php settings_fields('sandbox_theme_display_options');?>
-            <!---->
-            <?php do_settings_sections('sandbox_theme_display_options');?>
-            <!--这个是提交按钮-->
-            <?php submit_button();?>
-        </form>
-    </div><!-- /.wrap -->
-<?php
-} // end sandbox_theme_display
+        </style>
+    <?php
+}
