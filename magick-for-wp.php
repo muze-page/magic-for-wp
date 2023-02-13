@@ -8,6 +8,11 @@ Author: Muze
 Author URI: https://www.npc.ink/276641.html
  */
 
+// 如果直接调用此文件，请中止。
+if (!defined('WPINC')) {
+    die;
+}
+
 //载入ACF用的设置文件
 //require_once dirname(__FILE__) . '/includes/admin/ACF_Congif.php';
 
