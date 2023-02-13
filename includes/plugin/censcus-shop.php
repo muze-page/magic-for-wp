@@ -418,7 +418,7 @@ function magick_shop_order_content()
             xAxis: {
                 type: 'category',
                 //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund_order'])['value'])) ?>],
+                data: [<?php echo implode(',', array_reverse($MA_arr->handle_array_separate($get['total_refund_order'])['time'])) ?>],
             },
             yAxis: {
                 type: 'value'
