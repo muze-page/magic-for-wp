@@ -328,7 +328,9 @@ function magick_shop_order_content()
             title: {
                 text: "最近7天总销售额",
             },
-            tooltip: {},
+            tooltip: {
+                valueFormatter: (value) =>  value.toFixed(2)+'￥'
+            },
             xAxis: {
                 type: 'category',
                 //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -354,7 +356,9 @@ function magick_shop_order_content()
             title: {
                 text: "最近7天总销售订单",
             },
-            tooltip: {},
+            tooltip: {
+                valueFormatter: (value) =>  value.toFixed(2)+'￥'
+            },
             xAxis: {
                 type: 'category',
                 //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -380,7 +384,9 @@ function magick_shop_order_content()
             title: {
                 text: "最近7天总退款销售额",
             },
-            tooltip: {},
+            tooltip: {
+                valueFormatter: (value) =>  value.toFixed(2)+'￥'
+            },
             xAxis: {
                 type: 'category',
                 //data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -459,6 +465,8 @@ function magick_shop_order_content()
 }
 .magick_shop_box .content .child-box {
   padding: 10px 20px;
+  box-shadow: 8px 8px 20px 0 rgba(55, 99, 170, 0.1), -8px -8px 20px 0 #fff;
+  margin: 20px 4px;
 }
 .magick_shop_box .content .child-box > span {
   font-size: 16px;
