@@ -479,22 +479,46 @@ add_action('admin_menu', 'sandbox_example_theme_menu');
 function sandbox_theme_display()
 {
     ?>
-    <!-- 在默认WordPress“wrap”容器中创建标题 -->
-    <div class="wrap">
-        <!-- 将图标添加到页面 -->
+            <!-- Create a header in the default WordPress 'wrap' container -->
+            <div class="wrap">
 
-        <h2><span class="dashicons dashicons-buddicons-topics"></span>沙盒主题选项</h2>
-        <!-- 在保存设置时调用WordPress函数以呈现错误。 -->
-        <?php settings_errors();?>
-        <!-- 创建用于呈现选项的表单 -->
-        <form method="post" action="options.php">
-            <!---->
-            <?php settings_fields('sandbox_theme_display_options');?>
-            <!---->
-            <?php do_settings_sections('sandbox_theme_display_options');?>
-            <!--这个是提交按钮-->
-            <?php submit_button();?>
+                <div id="icon-themes" class="icon32"></div>
+                <h2>Sandbox Theme Options</h2>
+                <?php settings_errors();?>
+
+                <?php
+if (isset($_GET['tab'])) {
+        $active_tab = $_GET['tab'];
+    } // end if
+
+    //设置默认值
+    $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'display_options';
+    ?>
+
+            <h2 class="nav-tab-wrapper">
+                <a href="?page=sandbox_theme_options&tab=display_options" class="nav-tab <?php echo $active_tab == 'display_options' ? 'nav-tab-active' : ''; ?>">Display Options</a>
+                <a href="?page=sandbox_theme_options&tab=social_options" class="nav-tab <?php echo $active_tab == 'social_options' ? 'nav-tab-active' : ''; ?>">Social Options</a>
+            </h2>
+
+
+
+            <form method="post" action="options.php">
+            <?php
+
+    if ($active_tab == 'display_options') {
+        settings_fields('sandbox_theme_display_options');
+        do_settings_sections('sandbox_theme_display_options');
+    } else {
+        settings_fields('sandbox_theme_social_options');
+        do_settings_sections('sandbox_theme_social_options');
+    } // end if/else
+
+    submit_button();
+
+    ?>
         </form>
-    </div><!-- /.wrap -->
-<?php
+
+            </div><!-- /.wrap -->
+        <?php
 } // end sandbox_theme_display
+
