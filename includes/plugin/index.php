@@ -1,6 +1,11 @@
 <?php
 //这些并不是广告插件中应该有的文件，但基于实际工作需要，开发出的，必要时可独立
 
+//发文统计
+require_once dirname(__FILE__) . '/census-single.php';
+//销售统计
+//require_once dirname(__FILE__) . '/censcus-shop.php';
+
 //添加二级菜单
 
 // 这段代码是插件管理主菜单的创建函数
@@ -11,16 +16,11 @@ function add_diy_menu()
 
     add_menu_page(__('统计菜单'), __('统计菜单'), 'administrator', 'magick-census-single', false, 'dashicons-visibility');
     add_submenu_page('magick-census-single', __('发文统计'), __('发文统计'), 'administrator', 'magick-census-single', 'magick_census_single_content');
-    add_submenu_page('magick-census-single', __('销售统计'), __('销售统计'), 'administrator', 'magick-census-shop', 'magick_censcus_shop_content');
+    //add_submenu_page('magick-census-single', __('销售统计'), __('销售统计'), 'administrator', 'magick-census-shop', 'magick_censcus_shop_content');
 
     // submenu hook
     do_action('add_diy_submenu');
 }
-
-//发文统计
-require_once dirname(__FILE__) . '/census-single.php';
-//销售统计
-require_once dirname(__FILE__) . '/censcus-shop.php';
 
 /**
  * @internal 永远不要在回调中定义函数。
@@ -521,4 +521,3 @@ if (isset($_GET['tab'])) {
             </div><!-- /.wrap -->
         <?php
 } // end sandbox_theme_display
-
